@@ -1,6 +1,6 @@
 # Third-party licenses
 
-AerioTV for Android is licensed under the GNU General Public License v3.0 or
+GoatTV for Android is licensed under the GNU General Public License v3.0 or
 later (see [LICENSE](LICENSE) and [LICENSE-EXCEPTIONS.md](LICENSE-EXCEPTIONS.md)).
 This file lists the third-party components it distributes or links, and the terms
 they carry.

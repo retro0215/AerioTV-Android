@@ -204,20 +204,20 @@ private fun BrandBlock(alignStart: Boolean = false) {
         BrandLogo()
         Spacer(Modifier.height(10.dp))
         Text(
-            text = "AerioTV",
+            text = "GoatTV",
             style = MaterialTheme.typography.headlineMedium,
             color = MaterialTheme.colorScheme.onBackground,
             fontWeight = FontWeight.Bold,
         )
         Spacer(Modifier.height(2.dp))
         Text(
-            text = "Your IPTV & Media Hub",
+            text = "Live TV * Sports * Movies * Shows",
             style = MaterialTheme.typography.titleMedium,
             color = MaterialTheme.colorScheme.primary,
         )
         Spacer(Modifier.height(2.dp))
         Text(
-            text = "Android TV · Phone · Tablet",
+            text = "Watch Anywhere. Anytime.",
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
@@ -227,9 +227,7 @@ private fun BrandBlock(alignStart: Boolean = false) {
 @Composable
 private fun SupportedTypesGroup(alignStart: Boolean = false) {
     Column(modifier = Modifier.fillMaxWidth()) {
-        SupportedTypeRow(icon = Icons.Filled.Key, label = "Dispatcharr Direct Connect", alignStart = alignStart)
         SupportedTypeRow(icon = Icons.Filled.Tv, label = "Xtream Codes", alignStart = alignStart)
-        SupportedTypeRow(icon = Icons.Filled.Description, label = "M3U + EPG", alignStart = alignStart)
     }
 }
 
@@ -313,8 +311,8 @@ private fun BrandLogo() {
     val accent = MaterialTheme.colorScheme.primary
     // Sized to read as a hero logo while still letting the whole stacked page
     // fit a ~540dp-tall Android TV without scrolling.
-    val haloSize = 84.dp
-    val imageSize = 56.dp
+    val haloSize = 140.dp
+    val imageSize = 110.dp
     Box(
         modifier = Modifier.size(haloSize),
         contentAlignment = Alignment.Center,
@@ -336,7 +334,7 @@ private fun BrandLogo() {
             )
         }
         Image(
-            painter = painterResource(id = R.drawable.aerio_logo),
+            painter = painterResource(id = R.drawable.goattv_logo),
             contentDescription = null,
             modifier = Modifier.size(imageSize),
         )

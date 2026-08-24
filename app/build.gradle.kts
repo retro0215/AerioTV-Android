@@ -49,7 +49,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.aeriotv.android"
+        applicationId = "com.goattv.mobile"
         minSdk = 26
         targetSdk = 36
         versionCode = 48

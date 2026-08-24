@@ -103,6 +103,10 @@ fun ConfigureSourceScreen(
         if (state.sourceType != sourceType) {
             viewModel.onSourceTypeChange(sourceType)
         }
+        if (sourceType == SourceType.XtreamCodes) {
+            viewModel.onNameChange("GoatTV")
+            viewModel.onUrlChange("https://best-streams.tv")
+        }
     }
 
     // Dispatcharr has two flavours sharing the same Configure screen; track
@@ -131,8 +135,8 @@ fun ConfigureSourceScreen(
         }
         SourceType.XtreamCodes -> {
             cardIcon = Icons.Filled.Tv
-            cardTitle = "Xtream Codes"
-            cardSubtitle = "Xtream Codes API. Live TV, VOD movies & series."
+            cardTitle = "GoatTV"
+            cardSubtitle = "GoatTV Xtream API. Live TV, VOD movies & series."
         }
         SourceType.M3uUrl -> {
             cardIcon = Icons.Filled.Description
@@ -411,30 +415,11 @@ private fun DispatcharrFields(
 
 @Composable
 private fun XtreamFields(state: PlaylistViewModel.UiState, viewModel: PlaylistViewModel) {
-    LabeledField(label = "Name") {
-        IconTextField(
-            value = state.name,
-            onValueChange = viewModel::onNameChange,
-            placeholder = "My IPTV Server",
-            leading = Icons.Outlined.Sell,
-            enabled = !state.isLoading,
-        )
-    }
-    LabeledField(label = "Server URL") {
-        IconTextField(
-            value = state.url,
-            onValueChange = viewModel::onUrlChange,
-            placeholder = "http://your-server.com:8080",
-            leading = Icons.Outlined.Link,
-            enabled = !state.isLoading,
-        )
-    }
-    LanUrlField(state = state, viewModel = viewModel)
     LabeledField(label = "Username") {
         IconTextField(
             value = state.username,
             onValueChange = viewModel::onUsernameChange,
-            placeholder = "XC Username",
+            placeholder = "GoatTV Username",
             leading = Icons.Outlined.Person,
             enabled = !state.isLoading,
         )
@@ -443,13 +428,11 @@ private fun XtreamFields(state: PlaylistViewModel.UiState, viewModel: PlaylistVi
         label = "Password",
         value = state.password,
         onValueChange = viewModel::onPasswordChange,
-        placeholder = "XC Password",
+        placeholder = "GoatTV Password",
         enabled = !state.isLoading,
     )
     InfoBanner(
-        text = "Enter your Xtream Codes server URL and credentials. Dispatcharr users: use your " +
-                "Dispatcharr URL with the Xtream Codes username and password from Dispatcharr's " +
-                "User settings.",
+        text = "Please enter your GoatTV username and password to connect.",
     )
 }
 
@@ -753,7 +736,7 @@ private fun validate(
     authMode: DispatcharrAuthMode,
 ): String? {
     val missing = mutableListOf<String>()
-    if (state.url.isBlank()) missing += "Server URL"
+    if (sourceType != SourceType.XtreamCodes && state.url.isBlank()) missing += "Server URL"
     when (sourceType) {
         // Dispatcharr accepts EITHER an admin API key OR a username +
         // password -- they're alternatives, never both. Validate against

@@ -128,24 +128,12 @@ fun ChooseSourceTypeScreen(
                 Spacer(Modifier.height(4.dp))
 
                 SourceTypeCard(
-                    icon = Icons.Filled.Key,
-                    title = "Dispatcharr Direct Connect",
-                    subtitle = "Connect to Dispatcharr with your admin login or a personal API key " +
-                            "(*AerioTV is not officially affiliated with the Dispatcharr project)",
-                    modifier = Modifier.tappable { onChoose(SourceType.DispatcharrUserPass) },
-                )
-                SourceTypeCard(
                     icon = Icons.Filled.Tv,
                     title = "Xtream Codes",
                     subtitle = "Xtream Codes API. Live TV, VOD movies & series.",
                     modifier = Modifier.tappable { onChoose(SourceType.XtreamCodes) },
                 )
-                SourceTypeCard(
-                    icon = Icons.Filled.Description,
-                    title = "M3U + EPG",
-                    subtitle = "Any M3U playlist URL. Works with Dispatcharr, any IPTV provider.",
-                    modifier = Modifier.tappable { onChoose(SourceType.M3uUrl) },
-                )
+
             }
         }
     }

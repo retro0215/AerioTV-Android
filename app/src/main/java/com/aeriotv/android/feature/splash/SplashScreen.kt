@@ -115,13 +115,13 @@ private fun SplashContent(modifier: Modifier = Modifier) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             // The iOS rounded-square treatment is baked into the PNG.
             Image(
-                painter = painterResource(id = R.drawable.aerio_logo),
+                painter = painterResource(id = R.drawable.goattv_logo),
                 contentDescription = null,
                 modifier = Modifier.size(logoSize),
             )
             Spacer(Modifier.height(logoBottomPad))
             Text(
-                text = "AerioTV",
+                text = "GoatTV",
                 fontSize = titleSize,
                 fontWeight = FontWeight.Bold,
                 color = Color.White,
