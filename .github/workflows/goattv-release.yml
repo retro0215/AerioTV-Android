@@ -3,6 +3,9 @@ name: Build Official GoatTV APK
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build-release:
     runs-on: ubuntu-latest
@@ -45,9 +48,21 @@ jobs:
       - name: Build signed GoatTV release APK
         run: ./gradlew assembleGithubRelease
 
-      - name: Upload official GoatTV APK
+      - name: Rename APK
+        run: |
+          APK=$(find app/build/outputs/apk -type f -name "*.apk" | head -n 1)
+          cp "$APK" GoatTV-Mobile-v1.0.apk
+
+      - name: Upload workflow artifact
         uses: actions/upload-artifact@v4
         with:
-          name: GoatTV-Official-Release
-          path: app/build/outputs/apk/**/*.apk
-          if-no-files-found: error
+          name: GoatTV-Mobile-v1.0
+          path: GoatTV-Mobile-v1.0.apk
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0
+          name: GoatTV Mobile v1.0
+          files: GoatTV-Mobile-v1.0.apk
+          generate_release_notes: true
